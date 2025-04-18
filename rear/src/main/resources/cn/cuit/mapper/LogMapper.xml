@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cuit.mapper.LogMapper">
+
+    <resultMap id="BaseResultMap" type="cn.cuit.domain.Log">
+            <id property="logId" column="log_id" />
+            <result property="operationStatus" column="operation_status" />
+            <result property="timestamp" column="timestamp" />
+            <result property="adminId" column="admin_id" />
+            <result property="operationType" column="operation_type" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        log_id,operation_status,timestamp,admin_id,operation_type
+    </sql>
+</mapper>

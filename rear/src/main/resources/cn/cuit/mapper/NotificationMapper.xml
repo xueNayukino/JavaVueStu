@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cuit.mapper.NotificationMapper">
+
+    <resultMap id="BaseResultMap" type="cn.cuit.domain.Notification">
+            <id property="notificationId" column="notification_id" />
+            <result property="readStatus" column="read_status" />
+            <result property="receiver" column="receiver" />
+            <result property="content" column="content" />
+            <result property="title" column="title" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        notification_id,read_status,receiver,content,title
+    </sql>
+</mapper>

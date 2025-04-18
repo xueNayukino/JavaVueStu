@@ -1,0 +1,68 @@
+# 服务器配置
+server:
+  port: 8112
+  servlet:
+    context-path: /
+  tomcat:
+    threads:
+      max: 200
+    max-connections: 8192
+    accept-count: 100
+    connection-timeout: 20000
+
+spring:
+  application:
+    name: my_database
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_database?serverTimezone=Asia/Shanghai
+    username: root
+    password: "041020"
+  servlet:
+    multipart:
+      # 文件上传配置
+      max-file-size: 10MB
+      max-request-size: 10MB
+  web:
+    resources:
+      # 静态资源访问配置（用于访问上传的图片）
+      static-locations:
+        - file:public/images/
+        - classpath:/static/
+      # 添加静态资源映射
+      add-mappings: true
+      chain:
+        cache: false
+        enabled: true
+        strategy:
+          content:
+            enabled: true
+            paths: /**
+  # 添加事务管理配置
+  transaction:
+    rollback-on-commit-failure: true
+  # 自定义配置
+  upload:
+    # 图片上传路径
+    image-path: public/images
+    # 允许的文件类型
+    allowed-types: image/jpeg,image/png,image/gif
+    # 访问URL前缀
+    image-url-prefix: /api/student/images/
+  mvc:
+    static-path-pattern: /api/student/images/**
+
+# MyBatis-Plus配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 添加映射文件位置
+  mapper-locations: classpath:mapper/*.xml
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    cn.cuit: DEBUG
+    org.springframework.web: DEBUG
